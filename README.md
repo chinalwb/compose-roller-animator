@@ -18,6 +18,21 @@ RollerNumberAnimator(
 )
 ```
 
+### Decrease and reverse:
+
+![reverse](https://user-images.githubusercontent.com/1758864/173231256-040e1f16-8158-46fb-a302-3fc906becc76.gif)
+
+
+### Sample code:
+
+```
+RollerNumberAnimator(
+    startValue = 2022,
+    endValue = 1990,
+    decrease = true
+)
+```
+
 
 ### Simple Demo
 
