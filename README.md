@@ -21,7 +21,8 @@ RollerNumberAnimator(
 
 ### Simple Demo
 
-https://user-images.githubusercontent.com/1758864/173230410-0d6fdfc8-568e-4ddd-8422-0aba2682c43a.mp4
+
+![simple_demo](https://user-images.githubusercontent.com/1758864/173231043-fda4acb0-f02f-40fd-9fa0-7152e0d37d9b.gif)
 
 
 ### API and parmas:
