@@ -3,7 +3,7 @@ Roller animation effect with Compose
 
 ### Looks like:
 
-![roller_basic](https://user-images.githubusercontent.com/1758864/173230887-2c64c52d-3c72-4aef-b07d-10033b7594c4.gif)
+<img src="https://user-images.githubusercontent.com/1758864/173230887-2c64c52d-3c72-4aef-b07d-10033b7594c4.gif" width="160" />
 
 
 
@@ -20,7 +20,8 @@ RollerNumberAnimator(
 
 ### Decrease and reverse:
 
-![reverse](https://user-images.githubusercontent.com/1758864/173231256-040e1f16-8158-46fb-a302-3fc906becc76.gif)
+
+<img src="https://user-images.githubusercontent.com/1758864/173231362-71f567d5-295f-4142-8edc-b899ef4404b7.gif" width="160" />
 
 
 ### Sample code:
