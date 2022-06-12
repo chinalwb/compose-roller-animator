@@ -4,14 +4,17 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.gestures.Orientation
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.chinalwb.compose.rolleranimator.RollerNumberAnimator
@@ -37,87 +40,66 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting(name: String) {
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally
+    val scrollState = rememberScrollState()
+    Column(modifier = Modifier
+        .padding(horizontal = 16.dp)
+        .verticalScroll(scrollState)
     ) {
-        var startValue by remember {
-            mutableStateOf(1990)
-        }
-        var endValue by remember {
-            mutableStateOf(1990)
-        }
-        var decrease by remember {
-            mutableStateOf(false)
-        }
-        RollerNumberAnimator(startValue = startValue, endValue = endValue, animateOneByOne = true, ltr = false, decrease = decrease, duration = 1000, animateToSameNumber = false) {
-            Log.w("xx", "roller finished = $it")
-        }
-        Spacer(modifier = Modifier.height(16.dp))
+        Text(
+            modifier = Modifier.padding(vertical = 16.dp),
+            text = "Roller Animator Demo App", style = MaterialTheme.typography.h5)
 
-        Row(modifier = Modifier.fillMaxWidth()) {
-            Button(onClick = {
-                startValue = endValue
-                endValue += 1
-                decrease = false
-            }) {
-                Text(text = "+1")
-            }
+        Text(text = """
+            Settings: 
+            animateOneByOne = false,
+            duration = 600,
+            ltr = false,
+            animateToSameNumber = false
+        """.trimIndent())
+        RollerAnimatorDemo(
+            animateOneByOne = false,
+            duration = 600,
+            ltr = false,
+            animateToSameNumber = false,
+        )
 
-            Spacer(modifier = Modifier.width(16.dp))
+        Spacer(modifier = Modifier.height(64.dp))
+        Divider()
 
-            Button(onClick = {
-                startValue = endValue
-                endValue -= 1
-                decrease = true
-            }) {
-                Text(text = "-1")
-            }
+        Text(text = """
+            Settings: 
+            animateOneByOne = true,
+            duration = 600,
+            ltr = false,
+            animateToSameNumber = false
+        """.trimIndent())
 
-            Spacer(modifier = Modifier.width(16.dp))
+        RollerAnimatorDemo(
+            animateOneByOne = true,
+            duration = 600,
+            ltr = false,
+            animateToSameNumber = false,
+        )
 
-            Button(onClick = {
-                startValue = endValue
-                endValue += 10
-                decrease = false
-            }) {
-                Text(text = "+10")
-            }
+        Spacer(modifier = Modifier.height(64.dp))
+        Divider()
 
-            Spacer(modifier = Modifier.width(16.dp))
+        Text(text = """
+            Settings: 
+            animateOneByOne = true,
+            duration = 600,
+            ltr = true,
+            animateToSameNumber = true
+        """.trimIndent())
 
-            Button(onClick = {
-                startValue = endValue
-                endValue -= 10
-                decrease = true
-            }) {
-                Text(text = "-10")
-            }
-        }
-
-
-        Spacer(modifier = Modifier.width(16.dp))
-
-        Row(modifier = Modifier.fillMaxWidth()) {
-            Button(onClick = {
-                startValue = endValue
-                endValue += Random.nextInt(1000)
-                decrease = false
-            }) {
-                Text(text = "+random")
-            }
-
-            Spacer(modifier = Modifier.width(16.dp))
-
-            Button(onClick = {
-                startValue = endValue
-                endValue -= Random.nextInt(1000)
-                decrease = true
-            }) {
-                Text(text = "-random")
-            }
-        }
+        RollerAnimatorDemo(
+            animateOneByOne = true,
+            duration = 600,
+            ltr = true,
+            animateToSameNumber = true,
+        )
     }
+
 }
 
 @Preview(showBackground = true)

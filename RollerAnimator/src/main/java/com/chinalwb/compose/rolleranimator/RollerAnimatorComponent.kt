@@ -273,7 +273,7 @@ private fun <T> RollerNumberComponent(
 
         // val rollerAnimation = useNumberAnimation(listOf(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0))
         val rollerAnimation = if (useAnimation) {
-            useNumberAnimation(numberList, reverseDirection, duration)
+            useNumberAnimation(numberList, reverseDirection, duration, rememberKey)
         }
         else {
             if (isAnimated) {
@@ -354,12 +354,13 @@ data class RollerAnimation<T>(
 private fun <T> useNumberAnimation(
     numbers: List<T>,
     reverseDirection: Boolean = false,
-    duration: Int? = null
+    duration: Int? = null,
+    rememberKey: Any = Unit
 ): RollerAnimation<T> {
     val startIndex = 0
     val endIndex = numbers.lastIndex
 
-    val state = remember(numbers) {
+    val state = remember(rememberKey) {
         MutableTransitionState(RollerState.Started)
     }
     state.targetState = RollerState.Ended
